@@ -6,6 +6,113 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+        'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --color-electric-blue: #3e6ae1;
+    --color-carbon: #171a20;
+    --color-graphite: #393c41;
+    --color-pewter: #5c5e62;
+    --color-ash: #f4f4f4;
+    --color-cloud: #eeeeee;
+}
+
+@layer base {
+    body {
+        color: #171a20;
+        background: #ffffff;
+        letter-spacing: 0;
+    }
+}
+
+@layer components {
+    .site-button {
+        @apply inline-flex min-h-10 items-center justify-center rounded-sm px-6 py-2 text-sm font-medium transition-colors duration-300;
+    }
+
+    .site-button-primary {
+        @apply inline-flex min-h-10 items-center justify-center rounded-sm bg-electric-blue px-6 py-2 text-sm font-medium text-white transition-colors duration-300 hover:bg-[#3457bd];
+    }
+
+    .site-button-secondary {
+        @apply inline-flex min-h-10 items-center justify-center rounded-sm bg-white px-6 py-2 text-sm font-medium text-graphite transition-colors duration-300 hover:bg-ash;
+    }
+
+    .site-button-muted {
+        @apply inline-flex min-h-10 items-center justify-center rounded-sm bg-ash px-6 py-2 text-sm font-medium text-graphite transition-colors duration-300 hover:bg-cloud;
+    }
+
+    .site-field {
+        @apply w-full rounded-sm border border-cloud bg-white px-3 py-2 text-sm text-carbon outline-none transition-colors duration-300 focus:border-carbon;
+    }
+
+    .site-label {
+        @apply text-sm font-medium text-carbon;
+    }
+
+    .site-help {
+        @apply text-xs text-pewter;
+    }
+
+    .profile-metric {
+        @apply rounded-sm bg-ash p-5 transition-colors duration-300 hover:bg-cloud;
+    }
+
+    .mission-row {
+        @apply flex gap-4 rounded-sm bg-white p-4 transition-colors duration-300 hover:bg-cloud;
+    }
+
+    .staff-row {
+        @apply flex gap-3 border-t border-cloud py-4 transition-colors duration-300 hover:bg-ash;
+    }
+}
+
+@layer utilities {
+    .animate-reveal {
+        animation: reveal-up 0.7s cubic-bezier(0.5, 0, 0, 0.75) both;
+    }
+
+    .animate-delay-1 {
+        animation-delay: 0.12s;
+    }
+
+    .animate-delay-2 {
+        animation-delay: 0.24s;
+    }
+
+    .animate-delay-3 {
+        animation-delay: 0.36s;
+    }
+
+    .ambient-photo {
+        animation: ambient-photo 18s cubic-bezier(0.5, 0, 0, 0.75) infinite alternate both;
+    }
+}
+
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes ambient-photo {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.04);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .animate-reveal,
+    .ambient-photo {
+        animation: none;
+    }
 }

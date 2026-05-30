@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\SchoolSetting;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Throwable;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function ($view): void {
+            static $schoolSetting = null;
+
+            if (! $schoolSetting) {
+                try {
+                    $schoolSetting = SchoolSetting::current();
+                } catch (Throwable) {
+                    $schoolSetting = new SchoolSetting(SchoolSetting::defaults());
+                }
+            }
+
+            $view->with('schoolSetting', $schoolSetting);
+        });
     }
 }
