@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\NewsContentImageController;
 use App\Http\Controllers\Admin\NewsPostController as AdminNewsPostController;
 use App\Http\Controllers\Admin\SchoolSettingController;
 use App\Http\Controllers\HomeController;
@@ -28,6 +29,7 @@ Route::prefix('admin')->name('admin.')->group(function (): void {
         Route::get('/', DashboardController::class)->name('dashboard');
         Route::get('/settings', [SchoolSettingController::class, 'edit'])->name('settings.edit');
         Route::put('/settings', [SchoolSettingController::class, 'update'])->name('settings.update');
+        Route::post('/news/content-images', NewsContentImageController::class)->name('news.content-images.store');
         Route::resource('news', AdminNewsPostController::class)->except(['show']);
     });
 });

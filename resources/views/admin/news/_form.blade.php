@@ -3,6 +3,10 @@
     @method('PUT')
 @endif
 
+@pushOnce('styles')
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+@endPushOnce
+
 <section class="grid gap-6 border-t border-cloud pt-8 lg:grid-cols-[260px_1fr]">
     <div>
         <h2 class="text-[1.0625rem] font-medium text-carbon">Konten berita</h2>
@@ -23,8 +27,17 @@
             <textarea id="excerpt" name="excerpt" rows="3" class="site-field">{{ old('excerpt', $post->excerpt) }}</textarea>
         </div>
         <div class="space-y-2">
-            <label for="content" class="site-label">Isi berita</label>
-            <textarea id="content" name="content" rows="12" class="site-field" required>{{ old('content', $post->content) }}</textarea>
+            <span id="content-label" class="site-label">Isi berita</span>
+            <textarea id="content" name="content" rows="12" class="site-field" data-news-editor-input required>{{ old('content', $post->content) }}</textarea>
+            <div
+                class="news-editor-shell hidden"
+                data-news-editor
+                data-upload-url="{{ route('admin.news.content-images.store') }}"
+                role="textbox"
+                aria-labelledby="content-label"
+            ></div>
+            <p class="site-help">Gunakan toolbar untuk format teks, menambahkan tautan, daftar, kutipan, dan gambar di dalam isi berita.</p>
+            <p class="hidden text-xs font-medium" data-news-editor-status role="status"></p>
         </div>
     </div>
 </section>

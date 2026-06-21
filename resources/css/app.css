@@ -53,6 +53,50 @@
         @apply text-xs text-pewter;
     }
 
+    .news-editor-shell .ql-toolbar.ql-snow {
+        @apply rounded-t-sm border-cloud bg-ash;
+    }
+
+    .news-editor-shell .ql-container.ql-snow {
+        @apply min-h-80 rounded-b-sm border-cloud font-sans text-sm;
+    }
+
+    .news-editor-shell .ql-editor {
+        @apply min-h-80 leading-7 text-carbon;
+    }
+
+    .news-editor-shell .ql-editor.ql-blank::before {
+        @apply text-pewter;
+    }
+
+    .news-content.ql-editor {
+        @apply overflow-visible p-0 text-sm leading-7 text-graphite;
+    }
+
+    .news-content.ql-editor h2 {
+        @apply mb-4 mt-10 text-2xl font-semibold leading-tight text-carbon;
+    }
+
+    .news-content.ql-editor h3 {
+        @apply mb-3 mt-8 text-xl font-semibold leading-tight text-carbon;
+    }
+
+    .news-content.ql-editor p,
+    .news-content.ql-editor ol,
+    .news-content.ql-editor ul,
+    .news-content.ql-editor blockquote,
+    .news-content.ql-editor pre {
+        @apply mb-5;
+    }
+
+    .news-content.ql-editor a {
+        @apply font-medium text-electric-blue underline underline-offset-4;
+    }
+
+    .news-content.ql-editor img {
+        @apply my-8 max-h-[640px] w-full rounded-lg object-contain;
+    }
+
     .profile-metric {
         @apply rounded-sm bg-ash p-5 transition-colors duration-300 hover:bg-cloud;
     }

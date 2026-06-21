@@ -8,6 +8,7 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600" rel="stylesheet">
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @stack('styles')
     </head>
     <body class="min-h-screen pb-20 font-sans antialiased">
         <header class="fixed inset-x-0 top-0 z-40 bg-white/75 backdrop-blur-md">
@@ -78,5 +79,6 @@
                 </div>
             </div>
         </div> -->
+        @stack('scripts')
     </body>
 </html>

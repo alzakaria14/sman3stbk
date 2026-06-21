@@ -2,6 +2,10 @@
 
 @section('title', $post->title.' · '.$schoolSetting->display_name)
 
+@push('styles')
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
+@endpush
+
 @section('content')
     <article>
         <section class="relative flex min-h-[70vh] items-end overflow-hidden px-4 pb-16 pt-24 text-white md:px-8">
@@ -18,7 +22,11 @@
 
         <section class="px-4 py-16 md:px-8">
             <div class="mx-auto max-w-[760px]">
-                <div class="whitespace-pre-line text-sm leading-7 text-graphite">{{ $post->content }}</div>
+                @if ($post->hasRichContent())
+                    <div class="news-content ql-editor">{!! $post->content !!}</div>
+                @else
+                    <div class="whitespace-pre-line text-sm leading-7 text-graphite">{{ $post->content }}</div>
+                @endif
             </div>
         </section>
     </article>
